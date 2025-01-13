@@ -1,0 +1,24 @@
+[package]
+name = "finley"
+version = "0.1.0"
+authors = ["Jorge Brunal Pérez <diniremix@gmail.com>"]
+edition = "2021"
+license = "MIT OR Apache-2.0"
+description = "Dione, a pragmatic BackEnd using Axum and Rust"
+readme = "README.md"
+homepage = "https://gitlab.com/HomeInside"
+repository = "https://gitlab.com/HomeInside"
+keywords = ["dione", "actix", "backend"]
+categories = ["web-programming::http-server"]
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+# morse = { path = "morse", features=["spanish"]}
+morse = { git = "https://github.com/diniremix/morse", features=["spanish"]}
+
+[profile.release]
+lto = true
+opt-level = 2
+strip = true
+debug = false
+panic = "abort"
