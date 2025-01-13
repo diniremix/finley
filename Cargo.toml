@@ -15,6 +15,7 @@ categories = ["command-line-utilities", "encoding", "text-processing"]
 [dependencies]
 # morse = { path = "../morse", features=["spanish"]}
 morse = { git = "https://github.com/diniremix/morse", features=["spanish"]}
+pico-args = "0.5.0"
 
 [profile.release]
 lto = true
