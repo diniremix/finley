@@ -21,34 +21,37 @@ help:
     @echo "- run"
     @echo "- build"
     @echo "- release"
+    @echo "- docs"
+    @echo "- enc"
+    @echo "- dec"
     @echo "- dist"
     @echo "- test"
     @echo "- clean"
     @echo
 
 fmt:
-	cargo fmt
+	clear && cargo fmt
 
-fix:
-	clear && cargo fmt && cargo check
+fix: fmt
+	cargo check
 
-check:
-	clear && cargo check
+check: fmt
+	cargo check
 
-clippy:
-	clear && cargo fmt && cargo clippy --no-deps
+clippy: fmt
+	cargo clippy --no-deps
 
-run:
-	clear && cargo fmt && cargo run
+run: fmt
+	cargo run
 
-build:
-	clear && cargo fmt && cargo build
+build: fmt
+	cargo build
 
-release:
-	clear && cargo fmt && cargo build --release
+release: fmt
+	cargo build --release
 
-arg:
-    clear && cargo run -- --help
+docs:
+	RUSTDOCFLAGS="--cfg=docsrs" cargo doc --no-deps --document-private-items --release
 
 enc: clean build
     # fnl
@@ -60,9 +63,9 @@ dec: build
 dist:
     ./target/release/finley
 
-test:
+test: fmt
     # cargo test
-    clear && cargo fmt && cargo test
+    cargo test
 
 # cleaning the house...
 clean:
